@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		183663A7E620A359B154B720 /* Pods_GIymGiveawaysIns.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85748F01DF3D54341120B55A /* Pods_GIymGiveawaysIns.framework */; };
+		EB72587125B7DF6F00EBBFC2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72587025B7DF6F00EBBFC2 /* DataManager.swift */; };
+		EB7258C325B8330300EBBFC2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7258C225B8330300EBBFC2 /* UserModel.swift */; };
+		EB7258DD25B9919A00EBBFC2 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7258DC25B9919A00EBBFC2 /* FoundationExtension.swift */; };
+		EB7258FA25BAA5BB00EBBFC2 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7258F925BAA5BB00EBBFC2 /* HistoryManager.swift */; };
+		EB72596E25BAD35100EBBFC2 /* GISplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72596D25BAD35000EBBFC2 /* GISplashView.swift */; };
+		EB72597125BAD38B00EBBFC2 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72597025BAD38B00EBBFC2 /* PageControl.swift */; };
+		EB72597425BAD6B900EBBFC2 /* SplashManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72597325BAD6B900EBBFC2 /* SplashManager.swift */; };
+		EB72597725BADD6B00EBBFC2 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72597625BADD6B00EBBFC2 /* MailView.swift */; };
+		EBA76CFB25B6904700D31C60 /* QGridHor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA76CFA25B6904700D31C60 /* QGridHor.swift */; };
+		EBA76D0525B6AA7200D31C60 /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA76D0425B6AA7200D31C60 /* CoinManager.swift */; };
+		EBA76D0A25B6B51A00D31C60 /* GIGiveawayPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA76D0925B6B51A00D31C60 /* GIGiveawayPrizeView.swift */; };
+		EBA76D0E25B6BA0700D31C60 /* GIHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA76D0D25B6BA0700D31C60 /* GIHomeView.swift */; };
+		EBF0FD4925B5895000B883B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FD4825B5895000B883B8 /* AppDelegate.swift */; };
+		EBF0FD4B25B5895000B883B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FD4A25B5895000B883B8 /* SceneDelegate.swift */; };
+		EBF0FD4D25B5895000B883B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FD4C25B5895000B883B8 /* ContentView.swift */; };
+		EBF0FD4F25B5895300B883B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF0FD4E25B5895300B883B8 /* Assets.xcassets */; };
+		EBF0FD5225B5895300B883B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF0FD5125B5895300B883B8 /* Preview Assets.xcassets */; };
+		EBF0FD5525B5895300B883B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF0FD5325B5895300B883B8 /* LaunchScreen.storyboard */; };
+		EBF0FD9D25B58B1200B883B8 /* TextView in Frameworks */ = {isa = PBXBuildFile; productRef = EBF0FD9C25B58B1200B883B8 /* TextView */; };
+		EBF0FDA125B58B3900B883B8 /* ActivityView in Frameworks */ = {isa = PBXBuildFile; productRef = EBF0FDA025B58B3900B883B8 /* ActivityView */; };
+		EBF0FDA525B58C4000B883B8 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = EBF0FDA425B58C4000B883B8 /* SwiftUIX */; };
+		EBF0FDA925B58DB400B883B8 /* GIMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDA825B58DB400B883B8 /* GIMainView.swift */; };
+		EBF0FDAC25B58E0E00B883B8 /* GISettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDAB25B58E0E00B883B8 /* GISettingView.swift */; };
+		EBF0FDAF25B58E3A00B883B8 /* GIStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDAE25B58E3A00B883B8 /* GIStoreView.swift */; };
+		EBF0FDB225B58E6E00B883B8 /* GIHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDB125B58E6E00B883B8 /* GIHistoryView.swift */; };
+		EBF0FDB525B58EAE00B883B8 /* GIGiveawayLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDB425B58EAE00B883B8 /* GIGiveawayLinkView.swift */; };
+		EBF0FDB825B58EF400B883B8 /* GIGiveawayCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDB725B58EF400B883B8 /* GIGiveawayCheckView.swift */; };
+		EBF0FDBB25B58F4F00B883B8 /* GIGiveawaySetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDBA25B58F4F00B883B8 /* GIGiveawaySetView.swift */; };
+		EBF0FDBE25B58F7300B883B8 /* GIGiveawayResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDBD25B58F7300B883B8 /* GIGiveawayResultView.swift */; };
+		EBF0FDC225B594D300B883B8 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDC125B594D300B883B8 /* Keychain.swift */; };
+		EBF0FDC525B595C100B883B8 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDC425B595C100B883B8 /* SwiftUIExtension.swift */; };
+		EBF0FDC925B5963400B883B8 /* QGridVer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0FDC825B5963400B883B8 /* QGridVer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5CE0EA0F361A71DB1B923F51 /* Pods-GIymGiveawaysIns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIymGiveawaysIns.release.xcconfig"; path = "Target Support Files/Pods-GIymGiveawaysIns/Pods-GIymGiveawaysIns.release.xcconfig"; sourceTree = "<group>"; };
+		85748F01DF3D54341120B55A /* Pods_GIymGiveawaysIns.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GIymGiveawaysIns.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCE0E94CA3A9371FF5C04179 /* Pods-GIymGiveawaysIns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIymGiveawaysIns.debug.xcconfig"; path = "Target Support Files/Pods-GIymGiveawaysIns/Pods-GIymGiveawaysIns.debug.xcconfig"; sourceTree = "<group>"; };
+		EB72587025B7DF6F00EBBFC2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EB7258C225B8330300EBBFC2 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EB7258DC25B9919A00EBBFC2 /* FoundationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
+		EB7258F925BAA5BB00EBBFC2 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
+		EB72596D25BAD35000EBBFC2 /* GISplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GISplashView.swift; sourceTree = "<group>"; };
+		EB72597025BAD38B00EBBFC2 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		EB72597325BAD6B900EBBFC2 /* SplashManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashManager.swift; sourceTree = "<group>"; };
+		EB72597625BADD6B00EBBFC2 /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		EBA76CFA25B6904700D31C60 /* QGridHor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QGridHor.swift; sourceTree = "<group>"; };
+		EBA76D0425B6AA7200D31C60 /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		EBA76D0925B6B51A00D31C60 /* GIGiveawayPrizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawayPrizeView.swift; sourceTree = "<group>"; };
+		EBA76D0D25B6BA0700D31C60 /* GIHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIHomeView.swift; sourceTree = "<group>"; };
+		EBF0FD4525B5895000B883B8 /* GIymGiveawaysIns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIymGiveawaysIns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF0FD4825B5895000B883B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBF0FD4A25B5895000B883B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EBF0FD4C25B5895000B883B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EBF0FD4E25B5895300B883B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBF0FD5125B5895300B883B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EBF0FD5425B5895300B883B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EBF0FD5625B5895300B883B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBF0FDA825B58DB400B883B8 /* GIMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIMainView.swift; sourceTree = "<group>"; };
+		EBF0FDAB25B58E0E00B883B8 /* GISettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GISettingView.swift; sourceTree = "<group>"; };
+		EBF0FDAE25B58E3A00B883B8 /* GIStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIStoreView.swift; sourceTree = "<group>"; };
+		EBF0FDB125B58E6E00B883B8 /* GIHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIHistoryView.swift; sourceTree = "<group>"; };
+		EBF0FDB425B58EAE00B883B8 /* GIGiveawayLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawayLinkView.swift; sourceTree = "<group>"; };
+		EBF0FDB725B58EF400B883B8 /* GIGiveawayCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawayCheckView.swift; sourceTree = "<group>"; };
+		EBF0FDBA25B58F4F00B883B8 /* GIGiveawaySetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawaySetView.swift; sourceTree = "<group>"; };
+		EBF0FDBD25B58F7300B883B8 /* GIGiveawayResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawayResultView.swift; sourceTree = "<group>"; };
+		EBF0FDC125B594D300B883B8 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		EBF0FDC425B595C100B883B8 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
+		EBF0FDC825B5963400B883B8 /* QGridVer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QGridVer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBF0FD4225B5895000B883B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF0FD9D25B58B1200B883B8 /* TextView in Frameworks */,
+				EBF0FDA125B58B3900B883B8 /* ActivityView in Frameworks */,
+				183663A7E620A359B154B720 /* Pods_GIymGiveawaysIns.framework in Frameworks */,
+				EBF0FDA525B58C4000B883B8 /* SwiftUIX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		74C0577E4A67802D17B76D5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCE0E94CA3A9371FF5C04179 /* Pods-GIymGiveawaysIns.debug.xcconfig */,
+				5CE0EA0F361A71DB1B923F51 /* Pods-GIymGiveawaysIns.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C43A59FA26088541BD5F56C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85748F01DF3D54341120B55A /* Pods_GIymGiveawaysIns.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBA76CFE25B6A9C200D31C60 /* QGrid */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FDC825B5963400B883B8 /* QGridVer.swift */,
+				EBA76CFA25B6904700D31C60 /* QGridHor.swift */,
+			);
+			path = QGrid;
+			sourceTree = "<group>";
+		};
+		EBA76D0325B6AA6300D31C60 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				EBA76D0425B6AA7200D31C60 /* CoinManager.swift */,
+				EB72587025B7DF6F00EBBFC2 /* DataManager.swift */,
+				EB7258C225B8330300EBBFC2 /* UserModel.swift */,
+				EB7258F925BAA5BB00EBBFC2 /* HistoryManager.swift */,
+				EB72597325BAD6B900EBBFC2 /* SplashManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		EBF0FD3C25B5895000B883B8 = {
+			isa = PBXGroup;
+			children = (
+				EBF0FD4725B5895000B883B8 /* GIymGiveawaysIns */,
+				EBF0FD4625B5895000B883B8 /* Products */,
+				74C0577E4A67802D17B76D5B /* Pods */,
+				C43A59FA26088541BD5F56C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBF0FD4625B5895000B883B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FD4525B5895000B883B8 /* GIymGiveawaysIns.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBF0FD4725B5895000B883B8 /* GIymGiveawaysIns */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FDC025B594BE00B883B8 /* ToolStuff */,
+				EBF0FDC725B5962200B883B8 /* ViewStuff */,
+				EBA76D0325B6AA6300D31C60 /* DataManager */,
+				EBF0FD7A25B589B300B883B8 /* Main */,
+				EBF0FD7925B589A600B883B8 /* Root */,
+				EBF0FD5025B5895300B883B8 /* Preview Content */,
+			);
+			path = GIymGiveawaysIns;
+			sourceTree = "<group>";
+		};
+		EBF0FD5025B5895300B883B8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FD5125B5895300B883B8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EBF0FD7925B589A600B883B8 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FD4825B5895000B883B8 /* AppDelegate.swift */,
+				EBF0FD4A25B5895000B883B8 /* SceneDelegate.swift */,
+				EBF0FD4C25B5895000B883B8 /* ContentView.swift */,
+				EBF0FD4E25B5895300B883B8 /* Assets.xcassets */,
+				EBF0FD5325B5895300B883B8 /* LaunchScreen.storyboard */,
+				EBF0FD5625B5895300B883B8 /* Info.plist */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		EBF0FD7A25B589B300B883B8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FDA825B58DB400B883B8 /* GIMainView.swift */,
+				EB72596D25BAD35000EBBFC2 /* GISplashView.swift */,
+				EBA76D0D25B6BA0700D31C60 /* GIHomeView.swift */,
+				EBF0FDAB25B58E0E00B883B8 /* GISettingView.swift */,
+				EBF0FDAE25B58E3A00B883B8 /* GIStoreView.swift */,
+				EBF0FDB125B58E6E00B883B8 /* GIHistoryView.swift */,
+				EBA76D0925B6B51A00D31C60 /* GIGiveawayPrizeView.swift */,
+				EBF0FDB425B58EAE00B883B8 /* GIGiveawayLinkView.swift */,
+				EBF0FDB725B58EF400B883B8 /* GIGiveawayCheckView.swift */,
+				EBF0FDBA25B58F4F00B883B8 /* GIGiveawaySetView.swift */,
+				EBF0FDBD25B58F7300B883B8 /* GIGiveawayResultView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EBF0FDC025B594BE00B883B8 /* ToolStuff */ = {
+			isa = PBXGroup;
+			children = (
+				EBF0FDC125B594D300B883B8 /* Keychain.swift */,
+				EBF0FDC425B595C100B883B8 /* SwiftUIExtension.swift */,
+				EB7258DC25B9919A00EBBFC2 /* FoundationExtension.swift */,
+			);
+			path = ToolStuff;
+			sourceTree = "<group>";
+		};
+		EBF0FDC725B5962200B883B8 /* ViewStuff */ = {
+			isa = PBXGroup;
+			children = (
+				EB72597625BADD6B00EBBFC2 /* MailView.swift */,
+				EB72597025BAD38B00EBBFC2 /* PageControl.swift */,
+				EBA76CFE25B6A9C200D31C60 /* QGrid */,
+			);
+			path = ViewStuff;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBF0FD4425B5895000B883B8 /* GIymGiveawaysIns */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBF0FD5925B5895300B883B8 /* Build configuration list for PBXNativeTarget "GIymGiveawaysIns" */;
+			buildPhases = (
+				0544360AAA4BD9501CC33D4A /* [CP] Check Pods Manifest.lock */,
+				EBF0FD4125B5895000B883B8 /* Sources */,
+				EBF0FD4225B5895000B883B8 /* Frameworks */,
+				EBF0FD4325B5895000B883B8 /* Resources */,
+				71A6531C9C2D062332B57D1F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GIymGiveawaysIns;
+			packageProductDependencies = (
+				EBF0FD9C25B58B1200B883B8 /* TextView */,
+				EBF0FDA025B58B3900B883B8 /* ActivityView */,
+				EBF0FDA425B58C4000B883B8 /* SwiftUIX */,
+			);
+			productName = GIymGiveawaysIns;
+			productReference = EBF0FD4525B5895000B883B8 /* GIymGiveawaysIns.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBF0FD3D25B5895000B883B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					EBF0FD4425B5895000B883B8 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = EBF0FD4025B5895000B883B8 /* Build configuration list for PBXProject "GIymGiveawaysIns" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBF0FD3C25B5895000B883B8;
+			packageReferences = (
+				EBF0FD9B25B58B1200B883B8 /* XCRemoteSwiftPackageReference "TextView" */,
+				EBF0FD9F25B58B3900B883B8 /* XCRemoteSwiftPackageReference "ActivityView" */,
+				EBF0FDA325B58C4000B883B8 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
+			productRefGroup = EBF0FD4625B5895000B883B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBF0FD4425B5895000B883B8 /* GIymGiveawaysIns */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBF0FD4325B5895000B883B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF0FD5525B5895300B883B8 /* LaunchScreen.storyboard in Resources */,
+				EBF0FD5225B5895300B883B8 /* Preview Assets.xcassets in Resources */,
+				EBF0FD4F25B5895300B883B8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0544360AAA4BD9501CC33D4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GIymGiveawaysIns-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71A6531C9C2D062332B57D1F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GIymGiveawaysIns/Pods-GIymGiveawaysIns-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GIymGiveawaysIns/Pods-GIymGiveawaysIns-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GIymGiveawaysIns/Pods-GIymGiveawaysIns-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBF0FD4125B5895000B883B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBA76D0525B6AA7200D31C60 /* CoinManager.swift in Sources */,
+				EBA76D0E25B6BA0700D31C60 /* GIHomeView.swift in Sources */,
+				EB72597425BAD6B900EBBFC2 /* SplashManager.swift in Sources */,
+				EB72597125BAD38B00EBBFC2 /* PageControl.swift in Sources */,
+				EBF0FDBE25B58F7300B883B8 /* GIGiveawayResultView.swift in Sources */,
+				EBF0FDC525B595C100B883B8 /* SwiftUIExtension.swift in Sources */,
+				EBA76D0A25B6B51A00D31C60 /* GIGiveawayPrizeView.swift in Sources */,
+				EBF0FDAF25B58E3A00B883B8 /* GIStoreView.swift in Sources */,
+				EB72596E25BAD35100EBBFC2 /* GISplashView.swift in Sources */,
+				EBF0FDAC25B58E0E00B883B8 /* GISettingView.swift in Sources */,
+				EBF0FDB825B58EF400B883B8 /* GIGiveawayCheckView.swift in Sources */,
+				EB72597725BADD6B00EBBFC2 /* MailView.swift in Sources */,
+				EB7258FA25BAA5BB00EBBFC2 /* HistoryManager.swift in Sources */,
+				EBF0FDC925B5963400B883B8 /* QGridVer.swift in Sources */,
+				EBA76CFB25B6904700D31C60 /* QGridHor.swift in Sources */,
+				EBF0FD4925B5895000B883B8 /* AppDelegate.swift in Sources */,
+				EBF0FDC225B594D300B883B8 /* Keychain.swift in Sources */,
+				EBF0FDBB25B58F4F00B883B8 /* GIGiveawaySetView.swift in Sources */,
+				EB7258DD25B9919A00EBBFC2 /* FoundationExtension.swift in Sources */,
+				EBF0FD4B25B5895000B883B8 /* SceneDelegate.swift in Sources */,
+				EB72587125B7DF6F00EBBFC2 /* DataManager.swift in Sources */,
+				EBF0FD4D25B5895000B883B8 /* ContentView.swift in Sources */,
+				EBF0FDA925B58DB400B883B8 /* GIMainView.swift in Sources */,
+				EBF0FDB225B58E6E00B883B8 /* GIHistoryView.swift in Sources */,
+				EB7258C325B8330300EBBFC2 /* UserModel.swift in Sources */,
+				EBF0FDB525B58EAE00B883B8 /* GIGiveawayLinkView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EBF0FD5325B5895300B883B8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBF0FD5425B5895300B883B8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBF0FD5725B5895300B883B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EBF0FD5825B5895300B883B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBF0FD5A25B5895300B883B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCE0E94CA3A9371FF5C04179 /* Pods-GIymGiveawaysIns.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"GIymGiveawaysIns/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = GIymGiveawaysIns/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = youmai.GIymGiveawaysIns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBF0FD5B25B5895300B883B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE0EA0F361A71DB1B923F51 /* Pods-GIymGiveawaysIns.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0.0;
+				DEVELOPMENT_ASSET_PATHS = "\"GIymGiveawaysIns/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = GIymGiveawaysIns/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = youmai.GIymGiveawaysIns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBF0FD4025B5895000B883B8 /* Build configuration list for PBXProject "GIymGiveawaysIns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF0FD5725B5895300B883B8 /* Debug */,
+				EBF0FD5825B5895300B883B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBF0FD5925B5895300B883B8 /* Build configuration list for PBXNativeTarget "GIymGiveawaysIns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF0FD5A25B5895300B883B8 /* Debug */,
+				EBF0FD5B25B5895300B883B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EBF0FD9B25B58B1200B883B8 /* XCRemoteSwiftPackageReference "TextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kenmueller/TextView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.8;
+			};
+		};
+		EBF0FD9F25B58B3900B883B8 /* XCRemoteSwiftPackageReference "ActivityView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shaps80/ActivityView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		EBF0FDA325B58C4000B883B8 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EBF0FD9C25B58B1200B883B8 /* TextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBF0FD9B25B58B1200B883B8 /* XCRemoteSwiftPackageReference "TextView" */;
+			productName = TextView;
+		};
+		EBF0FDA025B58B3900B883B8 /* ActivityView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBF0FD9F25B58B3900B883B8 /* XCRemoteSwiftPackageReference "ActivityView" */;
+			productName = ActivityView;
+		};
+		EBF0FDA425B58C4000B883B8 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBF0FDA325B58C4000B883B8 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EBF0FD3D25B5895000B883B8 /* Project object */;
+}

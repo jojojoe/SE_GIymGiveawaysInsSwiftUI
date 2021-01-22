@@ -1,0 +1,7 @@
+GIymGiveawaysIns.xcodeproj/xcuserdata/
+GIymGiveawaysIns.xcworkspace/
+Pods/
+*.swp
+Podfile.lock
+.DS_Store
+GIymGiveawaysIns.xcodeproj/project.xcworkspace/xcuserdata/
