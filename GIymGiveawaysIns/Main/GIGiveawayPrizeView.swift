@@ -39,7 +39,7 @@ struct GIGiveawayPrizeView: View {
     @State private var alertType: GIGiveawayPrizeView_AlertType = .purchaseAlert
     
     var body: some View {
-        NavigationView {
+        
             ZStack {
                 bgView
                 contentView
@@ -47,7 +47,7 @@ struct GIGiveawayPrizeView: View {
                     inputNewPrizeView
                 }
             }.hideNavigationBar()
-        }
+        
         
         .alert(isPresented: $isShowAlert, content: {
             alert()

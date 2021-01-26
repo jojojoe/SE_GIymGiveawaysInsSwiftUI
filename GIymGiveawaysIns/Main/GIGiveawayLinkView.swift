@@ -30,12 +30,15 @@ struct GIGiveawayLinkView: View {
     @State private var isShowAlert: Bool = false
     //
     @State private var currentInputLinkString: String = ""
-    @State private var isEditing = true
+    @State private var isEditing = false
     @State private var isShowToast = false
     @State private var alertType: GIGiveawayLinkView_AlertType = .linkError
     @State private var isShowUrlPostCheckView = false
 //    @State private var edges: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]? = nil
 //    @State private var user: UserInfoModel.Graphql.User? = nil
+    
+    var once: Once = Once()
+    
     
     var body: some View {
         ZStack {
@@ -43,7 +46,13 @@ struct GIGiveawayLinkView: View {
             contentView
         }
         .onAppear(perform: {
-            currentInputLinkString = UserModelRequest.default.readPasteboard()
+            once.run {
+                
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
+                isEditing = true
+                currentInputLinkString = UserModelRequest.default.readPasteboard()
+            }
             
         })
         .alert(isPresented: $isShowAlert, content: {

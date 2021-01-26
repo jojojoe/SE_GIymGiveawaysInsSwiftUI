@@ -88,8 +88,8 @@ extension GIStoreView {
                  hPadding: 28) {
             storeCell(storeItem: $0)
                 .frame(width: 180, height: 160)
-                .shadow(color: Color(DynamicColor(hexString: "#451CC8").withAlphaComponent(0.15)), radius: 18, x: 0.0, y: 2)
-        }
+                
+        }.shadow(color: Color(DynamicColor(hexString: "#451CC8").withAlphaComponent(0.15)), radius: 18, x: 0.0, y: 2)
             
         
     }

@@ -40,7 +40,7 @@ struct GIMainView: View {
                     
                     FCSplashView()
                         .navigationBarHidden(true)
-                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+                        .frame(width: UIScreen.main.bounds.size.width)
 
                         .environmentObject(splashManager)
                         .hidden(splashManager.isShowSplash)

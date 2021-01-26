@@ -740,6 +740,7 @@ extension GIGiveawaySetView {
     var purchasePopView: some View {
         ZStack {
             Color(UIColor.black.withAlphaComponent(0.82))
+                .edgesIgnoringSafeArea(.all)
             ZStack {
                 Color(.white)
                 VStack {
@@ -760,7 +761,7 @@ extension GIGiveawaySetView {
                     Image("store_coins_02")
                     Spacer()
                         .frame(height: 32)
-                    Text("Copy Cost \(coinManager.coinCostCount) coins")
+                    Text("Cost \(coinManager.coinCostCount) coins")
                         .font(Font.custom("Avenir-Heavy", size: 20))
                         .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                     Spacer()

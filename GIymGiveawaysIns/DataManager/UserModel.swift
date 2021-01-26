@@ -26,7 +26,7 @@ class UserModelRequest: ObservableObject {
     @Published var winner: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?
     @Published var substitutes: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?
     
-    @Published var userInfo: GIUserInfoDes = GIUserInfoDes.init(postUrlStr: "", userProfileUrlStr: "", commendCount: "", loveCount: "")
+    @Published var userInfo: GIUserInfoDes = GIUserInfoDes.init(userID: "", postUrlStr: "", userProfileUrlStr: "", commendCount: "", loveCount: "")
     
     
     var reaginCount = 0
@@ -104,7 +104,7 @@ class UserModelRequest: ObservableObject {
                 let userProfile = model.graphql?.user?.profilePicUrl?.absoluteString ?? ""
                 let commentCount = "\(model.graphql?.user?.edgeMediaToParentComment?.count ?? 0)"
                 let loveCount = "\(model.graphql?.user?.edgeMediaPreviewLike?.count ?? 0)"
-                let info = GIUserInfoDes(postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
+                let info = GIUserInfoDes(userID: model.graphql?.user?.id ?? "", postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
                 self.userInfo = info
 //                self.user = model.graphql?.user
                 
@@ -170,7 +170,7 @@ class UserModelRequest: ObservableObject {
                 let userProfile = model.user?.profilePicUrl?.absoluteString ?? ""
                 let commentCount = "\(model.user?.edgeMediaToParentComment?.count ?? 0)"
                 let loveCount = "\(model.user?.edgeMediaPreviewLike?.count ?? 0)"
-                let info = GIUserInfoDes(postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
+                let info = GIUserInfoDes(userID: model.user?.id ?? "", postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
                 closure(true, edges, info)
                 
             } catch {
@@ -198,7 +198,13 @@ extension UserModelRequest {
             })
         }
         
-        let edges_filtered = filterEdge.filterDuplicates({$0?.node?.owner?.id})
+        let edges_removeMaster = filterEdge.filter { (edges) -> Bool in
+            edges?.node?.owner?.id != self.userInfo.userID
+        }
+        let edges_filtered = edges_removeMaster.filterDuplicates({$0?.node?.owner?.id})
+        
+        
+        
         let winner = edges_filtered.sample(size: winnerCount,noRepeat: true)
         var  unLastSubstitutes = [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]()
         if edges_filtered.count > winnerCount {
@@ -400,6 +406,7 @@ public struct UserInfoModel: MLJSONObject {
 }
 
 struct GIUserInfoDes {
+    var userID: String
     var postUrlStr: String
     var userProfileUrlStr: String
     var commendCount: String

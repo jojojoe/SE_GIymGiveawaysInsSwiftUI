@@ -90,8 +90,8 @@ class DataManager: ObservableObject {
     
     
     static let `default` = DataManager()
-    
-    var buildinPrizeStrings: [String] = ["Shose", "Clother", "Watch", "TV", "iPhone12Pro", "Mac"]
+                           
+    var buildinPrizeStrings: [String] = ["Cosmetic", "Bag", "Shoes", "Computer", "Perfume", "Bicycle"]
     
     
     init() {

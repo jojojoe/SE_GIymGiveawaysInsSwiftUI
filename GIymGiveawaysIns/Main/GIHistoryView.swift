@@ -39,6 +39,7 @@ extension GIHistoryView {
                         mode.dismiss()
                     }, label: {
                         Image("history_back")
+                            .frame(width: 64, height: 44, alignment: .center)
                     }).frame(width: 64, height: 44, alignment: .center)
                     Spacer()
                     
@@ -48,24 +49,30 @@ extension GIHistoryView {
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                 
             }
-            
-            
-            ScrollView(.vertical) {
-                Color(.white)
-                
-                VStack(spacing: 0) {
-                    //
+            if historyManager.historyList.count == 0 {
+                Spacer()
+                Text("No lottery data available")
+                    .font(Font.custom("Avenir-Heavy", size: 14))
+                    .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
+                Spacer()
+                    .frame(height: 80)
+                Spacer()
+            } else {
+                ScrollView(.vertical) {
+                    Color(.white)
                     
-                    ForEach(0..<(historyManager.historyList.count)) { index in
-                        historyCell(item: historyManager.historyList[index])
-
+                    VStack(spacing: 0) {
+                        //
                         
-                    }.padding(5)
+                        ForEach(0..<(historyManager.historyList.count)) { index in
+                            historyCell(item: historyManager.historyList[index])
+                        }.padding(5)
+                    }
                 }
-                
-                
+                .frame(width: UIScreen.main.bounds.width, alignment: .center)
             }
-            .frame(width: UIScreen.main.bounds.width, alignment: .center)
+            
+            
             
             
         }
@@ -78,17 +85,15 @@ extension GIHistoryView {
             HStack {
                 Spacer()
                     .frame(width: 20)
-                if let _ = item?.postUrl {
-                    userIconImageView(urlStr: item?.postUrl ?? "")
+                if let urlStr = item?.postUrl, let url = URL(string: urlStr) {
+                    userIconImageView(url: url)
                         .mask(Color(.black).cornerRadius(8).frame(width: 66, height: 66))
                         .frame(width: 66, height: 66, alignment: .center)
                 } else {
                     Image("post_png")
                         .resizable()
                         .frame(width: 64, height: 64, alignment: .center)
-                    userIconImageView(urlStr: item?.postUrl ?? "")
-                        .mask(Color(.black).cornerRadius(8).frame(width: 66, height: 66))
-                        .frame(width: 66, height: 66, alignment: .center)
+                    
                 }
                 Spacer()
                     .frame(width: 10)
@@ -133,12 +138,12 @@ extension GIHistoryView {
         
     }
     
-    func userIconImageView(urlStr: String) -> some View {
-        var url = URL(string: urlStr)
+    func userIconImageView(url: URL) -> some View {
+//        var url = URL(string: urlStr)
         
-        url = URL(string: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftu.maomaogougou.cn%2Fpicture%2F2016%2F05%2F604fe235f063f67d9eea94add4765602.jpg&refer=http%3A%2F%2Ftu.maomaogougou.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613878546&t=f00f5e5f6f4fa9201bcb956b445bdceb")
+//        url = URL(string: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftu.maomaogougou.cn%2Fpicture%2F2016%2F05%2F604fe235f063f67d9eea94add4765602.jpg&refer=http%3A%2F%2Ftu.maomaogougou.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613878546&t=f00f5e5f6f4fa9201bcb956b445bdceb")
         
-        return URLImage(url: url!,
+        return URLImage(url: url,
             content: { image in
                 image
                     .resizable()

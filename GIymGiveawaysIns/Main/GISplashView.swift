@@ -39,7 +39,7 @@ struct FCSplashView: View {
                 Spacer()
                 topContentView
                 Spacer()
-                    .frame(height: 0)
+                    .frame(height: 30)
                 pageControlView
                     .frame(height: 30)
                 bottomBtn
@@ -133,6 +133,7 @@ extension FCSplashView {
                             }
                         }
                     }
+                
             } else {
                 ZStack {
                     if tabSelectIndex == 0 {
@@ -173,16 +174,9 @@ extension FCSplashView {
                                 }
                             }
                     }
-
-
                 }
             }
-            
-            
         }
-        
-        
-        
     }
     
     var pageControlView: some View {
@@ -244,16 +238,17 @@ extension FCSplashView {
 //                    .foregroundColor(.white)
 //                    .padding(EdgeInsets(top: 10, leading: 40, bottom: 20, trailing: 40))
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 30)
                 Text(content)
                     .lineLimit(3)
                     .font(Font.custom("Avenir-Black", size: 24))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(DynamicColor(hexString: "#FFFFFF")))
-                    .padding(EdgeInsets(top: 10, leading: 40, bottom: 20, trailing: 40))
+                    .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 40))
+                    .height(70)
                     
                 Spacer()
-                    .frame(height: 0)
+                    .frame(height: 20)
 
             }.width(geo.size.width)
         }
