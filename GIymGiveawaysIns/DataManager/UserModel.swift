@@ -10,6 +10,8 @@ import SwiftyJSON
 import Alamofire
 
  
+
+
 class UserModelRequest: ObservableObject {
     
     static let `default` = UserModelRequest()
@@ -19,16 +21,36 @@ class UserModelRequest: ObservableObject {
     @Published var substitutesCount: String = ""
     
     @Published var edges: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]? = nil
-    @Published var user: UserInfoModel.Graphql.User? = nil
+//    @Published var user: UserInfoModel.Graphql.User? = nil
     
     @Published var winner: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?
     @Published var substitutes: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?
     
+    @Published var userInfo: GIUserInfoDes = GIUserInfoDes.init(postUrlStr: "", userProfileUrlStr: "", commendCount: "", loveCount: "")
+    
+    
     var reaginCount = 0
     
+    @Published var pasteboardString: String = ""
     
+    init() {
+        NotificationCenter.default.addObserver(self, selector:#selector(becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        //注册进入后台的通知
+        NotificationCenter.default.addObserver(self, selector:#selector(becomeDeath), name: UIApplication.willResignActiveNotification, object: nil)
+
+    }
     
-    func request(urlstr: String, completion: @escaping (_ success: Bool, _ edges: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?, _ user: UserInfoModel.Graphql.User?)-> Void) {
+    //必须要加@objc-----进入前台
+    @objc  func becomeActive(noti:Notification){
+        readPasteboard()
+    }
+    //必须要加@objc----进后台
+    @objc  func becomeDeath(noti:Notification){
+        
+        
+    }
+    
+    func request(urlstr: String, completion: @escaping (_ success: Bool, _ edges: [UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?, _ user: GIUserInfoDes?)-> Void) {
         
         let uppwer = urlstr.range(of: "https://www.instagram.com/p/")
         
@@ -50,7 +72,7 @@ class UserModelRequest: ObservableObject {
             return
         }
         
-        postUrl = reqstURL
+        
         
         AF.request(url, method: .get, parameters: nil, headers: nil).responseJSON { (response) in
             
@@ -73,20 +95,33 @@ class UserModelRequest: ObservableObject {
                     return
                 }
                 debugPrint(edgesNo)
-                self.failedNextRequest(shortcode: shortcode) { (success, edges) in
-                    self.edges = edges
-                    self.user = model.graphql?.user
-                    completion(success, edges, model.graphql?.user)
-                }
+                
+                self.postUrl = model.graphql?.user?.displayUrl?.absoluteString ?? ""
+                
+                self.edges = model.graphql?.user?.edgeMediaToParentComment?.edges
+                
+                let postUrl_m = model.graphql?.user?.displayUrl?.absoluteString ?? ""
+                let userProfile = model.graphql?.user?.profilePicUrl?.absoluteString ?? ""
+                let commentCount = "\(model.graphql?.user?.edgeMediaToParentComment?.count ?? 0)"
+                let loveCount = "\(model.graphql?.user?.edgeMediaPreviewLike?.count ?? 0)"
+                let info = GIUserInfoDes(postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
+                self.userInfo = info
+//                self.user = model.graphql?.user
+                
+                completion(true, self.edges, self.userInfo)
                
             } catch {
                 debugPrint(error)
                 self.reaginCount = self.reaginCount+1
                 if self.reaginCount >= 3 {
                     self.reaginCount = 0
-                    self.failedNextRequest(shortcode: shortcode) { (success, edges) in
+                    self.failedNextRequest(shortcode: shortcode) { (success, edges, user) in
                         self.edges = edges
-                        completion(success, edges, nil)
+                        if let user_m = user {
+                            self.userInfo = user_m
+                        }
+                        
+                        completion(success, edges, self.userInfo)
                     }
                 } else {
                     self.request(urlstr: urlstr, completion: completion)
@@ -95,7 +130,7 @@ class UserModelRequest: ObservableObject {
         }
     }
     
-    func failedNextRequest(shortcode:String,closure:@escaping(_ success: Bool, _ edges:[UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?) -> Void) {
+    func failedNextRequest(shortcode:String,closure:@escaping(_ success: Bool, _ edges:[UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?]?, _ user: GIUserInfoDes?) -> Void) {
         let nexpraram = [
             "shortcode":shortcode,
             "first":"400",
@@ -106,13 +141,13 @@ class UserModelRequest: ObservableObject {
         let nexvariables =  nexpinCode?.urlEncoded
         let nexreqstURL =   "https://www.in\("stag")ram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables=\(nexvariables ?? "")"
         guard let nexurl = URL(string: nexreqstURL) else {
-            closure(false, nil)
+            closure(false, nil, nil)
             return
         }
         AF.request(nexurl, method: .get, parameters: nil, headers: nil).responseJSON { (response) in
             debugPrint(response.value ?? "")
             guard let rdata = response.data else {
-                closure(false, nil)
+                closure(false, nil, nil)
                 return
             }
             
@@ -120,20 +155,26 @@ class UserModelRequest: ObservableObject {
 
                 let json = try JSON(data: rdata)
                 guard let data =  try? json["data"].rawData()  else {
-                    closure(false, nil)
+                    closure(false, nil, nil)
                     return
                 }
 
                 let model = try JSONDecoder().decode(UserInfoModel.Graphql.self, from: data)
                 guard let edges = model.user?.edgeMediaToParentComment?.edges?.map({$0})  else {
-                    closure(false, nil)
+                    closure(false, nil, nil)
                     return
                 }
                 debugPrint(edges)
-                closure(true, edges)
-               
+                
+                let postUrl_m = model.user?.displayUrl?.absoluteString ?? ""
+                let userProfile = model.user?.profilePicUrl?.absoluteString ?? ""
+                let commentCount = "\(model.user?.edgeMediaToParentComment?.count ?? 0)"
+                let loveCount = "\(model.user?.edgeMediaPreviewLike?.count ?? 0)"
+                let info = GIUserInfoDes(postUrlStr: postUrl_m, userProfileUrlStr: userProfile, commendCount: commentCount, loveCount: loveCount)
+                closure(true, edges, info)
+                
             } catch {
-                closure(false, nil)
+                closure(false, nil, nil)
                 debugPrint(error)
             }
         }
@@ -209,6 +250,21 @@ extension UserModelRequest {
     }
     
     
+    func readPasteboard() -> String {
+        let pasteboard = UIPasteboard.general
+        if let string = pasteboard.string {
+            if !(string.contains("https://www.in\("stag")ram.com/p/") ) &&
+                !(string.contains("/?igshid=") ) {
+                return ""
+            } else {
+                pasteboardString = string
+                return string
+            }
+        } else {
+            return ""
+        }
+    }
+    
 }
 
  
@@ -254,7 +310,7 @@ public struct UserInfoModel: MLJSONObject {
                         }
 
                     }
-//                    public var profilePicUrl: URL?
+                    public var profilePicUrl: URL?
 //                    public var externalUrlLinkshimmed: URL?
 //                    public var fullName: String?
 //                    public var edgeFollowBy: EdgeFoll?
@@ -304,7 +360,7 @@ public struct UserInfoModel: MLJSONObject {
 //                    public var username: String?
 //                    public var isPrivate: Bool?
                     private enum CodingKeys: String, CodingKey {
-//                        case profilePicUrl = "profile_pic_url"
+                        case profilePicUrl = "profile_pic_url"
 //                        case externalUrlLinkshimmed = "external_url_linkshimmed"
 //                        case fullName = "full_name"
 //                        case profilePicUrlHd = "profile_pic_url_hd"
@@ -343,3 +399,9 @@ public struct UserInfoModel: MLJSONObject {
 //    public var entryData: EntryData?
 }
 
+struct GIUserInfoDes {
+    var postUrlStr: String
+    var userProfileUrlStr: String
+    var commendCount: String
+    var loveCount: String
+}

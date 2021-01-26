@@ -28,7 +28,7 @@ struct GIGiveawayLinkView: View {
     
     
     @State private var isShowAlert: Bool = false
-    
+    //
     @State private var currentInputLinkString: String = ""
     @State private var isEditing = true
     @State private var isShowToast = false
@@ -42,6 +42,10 @@ struct GIGiveawayLinkView: View {
             bgView
             contentView
         }
+        .onAppear(perform: {
+            currentInputLinkString = UserModelRequest.default.readPasteboard()
+            
+        })
         .alert(isPresented: $isShowAlert, content: {
             alert()
         })
@@ -57,11 +61,11 @@ struct GIGiveawayLinkView: View {
     
     func alert() -> Alert {
         if alertType == .linkError {
-            return Alert(title: Text(""), message: Text("请输入有效的链接"), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text("Please enter a valid link."), dismissButton: .default(Text("OK")))
         } else if alertType == .requestError {
-            return Alert(title: Text(""), message: Text("请求出错，请稍后重新再试"), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text("Request error, try again later."), dismissButton: .default(Text("OK")))
         } else {
-            return Alert(title: Text(""), message: Text("请输入有效的链接"), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text("Please enter a valid link."), dismissButton: .default(Text("OK")))
         }
         
     }
@@ -107,7 +111,7 @@ extension GIGiveawayLinkView {
                     TextView(
                         text: $currentInputLinkString,
                         isEditing: $isEditing,
-                        placeholder: "Long press copy",
+                        placeholder: "Please Input Your Instagram Post URL",
                         textColor: #colorLiteral(red: 0.3490196078, green: 0.2156862745, blue: 0.7764705882, alpha: 1), placeholderColor: Color(DynamicColor(hexString: "#5937C6").withAlphaComponent(0.3)),
                         backgroundColor: (DynamicColor(hexString: "#FFFFFF"))
                     )
@@ -120,38 +124,51 @@ extension GIGiveawayLinkView {
             
             Spacer()
                 .frame(height: 50)
-            Button(action: {
-                //TODO: check url link
-                if !(currentInputLinkString.contains("https://www.in\("stag")ram.com/p/") ) &&
-                    !(currentInputLinkString.contains("/?igshid=") ) {
-                    isShowAlert = true
-                } else {
-                    
-                    isShowToast = true
-                    userModelManager.request(urlstr: currentInputLinkString) { (success, edges, user) in
-                        isShowToast = false
-                        if success {
-//                            self.edges = edges
-//                            self.user = user
-                            isShowUrlPostCheckView = true
-                        } else {
-                            alertType = .requestError
+            
+            
+            NavigationLink(
+                destination: GIGiveawayCheckView()
+                    .hideNavigationBar()
+                    .environmentObject(CoinManager.default)
+                    .environmentObject(DataManager.default)
+                    .environmentObject(UserModelRequest.default),
+                isActive: $isShowUrlPostCheckView,
+                label: {
+                    Button(action: {
+                        //TODO: check url link
+                        if !(currentInputLinkString.contains("https://www.in\("stag")ram.com/p/") ) &&
+                            !(currentInputLinkString.contains("/?igshid=") ) {
                             isShowAlert = true
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                        } else {
+                            
+                            isShowToast = true
+                            userModelManager.request(urlstr: currentInputLinkString) { (success, edges, user) in
                                 isShowToast = false
+                                if success {
+        //                            self.edges = edges
+        //                            self.user = user
+                                    isShowUrlPostCheckView = true
+                                } else {
+                                    alertType = .requestError
+                                    isShowAlert = true
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                                        isShowToast = false
+                                    }
+                                }
                             }
                         }
-                    }
-                }
-                
-            }, label: {
-                ZStack {
-                    Image("contiune_button_png")
-                    Text("Find Post")
-                        .font(Font.custom("Avenir-Heavy", size: 20))
-                        .foregroundColor(.white)
-                }
-            })
+                        
+                    }, label: {
+                        ZStack {
+                            Image("contiune_button_png")
+                            Text("Find Post")
+                                .font(Font.custom("Avenir-Heavy", size: 20))
+                                .foregroundColor(.white)
+                        }
+                    })
+                })
+            
+            
             Spacer()
                 .frame(height: 60)
             

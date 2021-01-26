@@ -34,6 +34,7 @@ struct GIGiveawayPrizeView: View {
     @State private var isShowNextLineView: Bool = false
     @State private var isShowCoinStoreView: Bool = false
     
+    @State private var isEditingKeyboard: Bool = false
     @State private var isShowAlert: Bool = false
     @State private var alertType: GIGiveawayPrizeView_AlertType = .purchaseAlert
     
@@ -45,13 +46,17 @@ struct GIGiveawayPrizeView: View {
                 if isShowInputView {
                     inputNewPrizeView
                 }
-            }
+            }.hideNavigationBar()
         }
         
         .alert(isPresented: $isShowAlert, content: {
             alert()
         })
-        
+        .sheet(isPresented: $isShowCoinStoreView, content: {
+            GIStoreView()
+                .navigationBarHidden(true)
+                .environmentObject(CoinManager.default)
+        })
     }
     
 }
@@ -63,15 +68,17 @@ struct GIGiveawayPrizeView: View {
 extension GIGiveawayPrizeView {
     func alert() -> Alert {
         if alertType == .purchaseAlert {
-            return Alert(title: Text(""), message: Text("Add new prize will cost \(coinManager.coinCount) coins, will continue?"), primaryButton: .cancel(Text("Cancel")), secondaryButton: .default(Text("Ok"), action: {
+            return Alert(title: Text(""), message: Text("Add new prize will cost \(coinManager.coinCostCount) coins, will continue?"), primaryButton: .cancel(Text("Cancel")), secondaryButton: .default(Text("Ok"), action: {
                 coinManager.costCoin(coin: coinManager.coinCostCount)
                 dataManager.addNewCustomPrize(prize: currentInputPrizeString)
+                prizeTitleString = currentInputPrizeString
                 isShowInputView = false
+                isEditingKeyboard = false
             }))
         } else if alertType == .inputDisenableAlert {
-            return Alert(title: Text(""), message: Text("添加Prize到上限，请先删除已有的再进行添加."), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text("Add Prize to the upper limit, please delete the existing before adding."), dismissButton: .default(Text("OK")))
         } else if alertType == .deletePrizeAlert {
-            return Alert(title: Text(""), message: Text("确定要删除这个Prize吗？"), primaryButton: .cancel(Text("Cancel")), secondaryButton: .default(Text("Ok"), action: {
+            return Alert(title: Text(""), message: Text("Are you sure you want to delete this prize"), primaryButton: .cancel(Text("Cancel")), secondaryButton: .default(Text("Ok"), action: {
                 if let willDeletePrizeItem_m = willDeletePrizeItem {
                     dataManager.removeCustomPrize(prizeItem: willDeletePrizeItem_m)
                 }
@@ -81,7 +88,7 @@ extension GIGiveawayPrizeView {
                         isShowCoinStoreView = true
                     }), secondaryButton: .cancel(Text("Cancel")))
         } else if alertType == .inputNilPrizeAlert {
-            return Alert(title: Text(""), message: Text("请输入有效信息"), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text("Please enter valid information."), dismissButton: .default(Text("OK")))
         } else {
             return Alert(title: Text(""), message: Text(""), dismissButton: .default(Text("OK")))
         }
@@ -168,13 +175,17 @@ extension GIGiveawayPrizeView {
                      hPadding: 8) {
                 
                 prizeCell(prizeItem: $0)
-                    
+                
             }
+            
+             
             addPrizeBtn
                 .onTapGesture {
+                    currentInputPrizeString = ""
                     if dataManager.canAddNewPrize {
                         if coinManager.coinCount >= coinManager.coinCostCount {
                             isShowInputView = true
+                            isEditingKeyboard = true
                         } else {
                             alertType = .coinNotEnoughAlert
                             isShowAlert = true
@@ -274,15 +285,19 @@ extension GIGiveawayPrizeView {
         ZStack {
             Color(UIColor.black.withAlphaComponent(0.8))
             VStack {
+                Spacer()
+                    .frame(height: 50)
                 HStack {
                     Button(action: {
                         isShowInputView = false
+                        isEditingKeyboard = false
                     }, label: {
                         Image("cloes_buttton")
                     }).frame(width: 64, height: 44, alignment: .center)
                     Spacer()
                     Button(action: {
                         if currentInputPrizeString.count >= 1 {
+                            isShowInputView = false
                             alertType = .purchaseAlert
                             isShowAlert = true
                         } else {
@@ -304,7 +319,7 @@ extension GIGiveawayPrizeView {
                             .frame(width: 20)
                         TextView(
                             text: $currentInputPrizeString,
-                            isEditing: $isShowInputView,
+                            isEditing: $isEditingKeyboard,
                             placeholder: "Put in your prize...",
                             textColor: #colorLiteral(red: 0.3490196078, green: 0.2156862745, blue: 0.7764705882, alpha: 1), placeholderColor: Color(DynamicColor(hexString: "#5937C6").withAlphaComponent(0.3)),
                             backgroundColor: (DynamicColor(hexString: "#FFFFFF"))
@@ -319,8 +334,6 @@ extension GIGiveawayPrizeView {
                 Spacer()
             }
         }
-        
-        
     }
 }
 

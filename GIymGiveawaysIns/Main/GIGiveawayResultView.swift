@@ -66,6 +66,7 @@ extension GIGiveawayResultView {
                         .hidden(!isShowWinnerType)
                     Button(action: {
                         isShowWinnerType = true
+                        isShowSubstitutesType = false
                     }, label: {
                         Text("Winners")
                             .font(Font.custom("Avenir-Heavy", size: 22))
@@ -80,6 +81,7 @@ extension GIGiveawayResultView {
                         .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                         .hidden(!isShowSubstitutesType)
                     Button(action: {
+                        isShowWinnerType = false
                         isShowSubstitutesType = true
                     }, label: {
                         Text("Substitutes ")
@@ -90,12 +92,15 @@ extension GIGiveawayResultView {
                 }
                 Spacer()
             }.frame(width: UIScreen.main.bounds.width, height: 40, alignment: .center)
-            if isShowWinnerType {
-                winnerContentView
+            ZStack {
+                if isShowWinnerType {
+                    winnerContentView
+                }
+                if isShowSubstitutesType {
+                    substitutesContentView
+                }
             }
-            if isShowSubstitutesType {
-                substitutesContentView
-            }
+            
             Spacer()
         }
     }
@@ -136,9 +141,9 @@ extension GIGiveawayResultView {
                     Image("user_png")
                         .resizable()
                         .frame(width: 64, height: 64, alignment: .center)
-                    userIconImageView(item: item)
-                        .mask(Circle().fill(Color.black).frame(width: 64, height: 64))
-                        .frame(width: 64, height: 64, alignment: .center)
+//                    userIconImageView(item: item)
+//                        .mask(Circle().fill(Color.black).frame(width: 64, height: 64))
+//                        .frame(width: 64, height: 64, alignment: .center)
                 }
                 Spacer()
                     .frame(width: 20)
@@ -163,7 +168,7 @@ extension GIGiveawayResultView {
     func userIconImageView(item: UserInfoModel.Graphql.User.EdgeMediaToParentComment.Edges?) -> some View {
         var url = item?.node?.owner?.profilePicUrl
         
-        url = URL(string: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftu.maomaogougou.cn%2Fpicture%2F2016%2F05%2F604fe235f063f67d9eea94add4765602.jpg&refer=http%3A%2F%2Ftu.maomaogougou.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613878546&t=f00f5e5f6f4fa9201bcb956b445bdceb")
+//        url = URL(string: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftu.maomaogougou.cn%2Fpicture%2F2016%2F05%2F604fe235f063f67d9eea94add4765602.jpg&refer=http%3A%2F%2Ftu.maomaogougou.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613878546&t=f00f5e5f6f4fa9201bcb956b445bdceb")
         
         return URLImage(url: url!,
             content: { image in
@@ -185,19 +190,12 @@ extension GIGiveawayResultView {
                 ForEach(0..<(userModelManager.substitutes?.count ?? 0)) { index in
                     resultCell(item: userModelManager.substitutes?[index])
 //
-                    
                 }.padding(5)
             }
-            
-            
         }
         .frame(width: UIScreen.main.bounds.width, alignment: .center)
-        
+   
     }
- 
-    
-    
-    
 }
 
 
@@ -206,6 +204,8 @@ struct GIGiveawayResultView_Previews: PreviewProvider {
         GIGiveawayResultView()
             .environmentObject(CoinManager.default)
             .environmentObject(DataManager.default)
+            .environmentObject(UserModelRequest.default)
+        
     }
 }
 

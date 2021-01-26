@@ -23,6 +23,7 @@ struct GIStoreView: View {
     var body: some View {
         ZStack {
             bgView
+                .edgesIgnoringSafeArea(.all)
             contentView
         }
     }

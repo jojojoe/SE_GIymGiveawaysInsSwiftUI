@@ -47,6 +47,8 @@ struct GIGiveawaySetView: View {
     
     @State private var isShowCoinStoreView: Bool = false
     
+    var maxCount: Int = 20
+    
     var body: some View {
         ZStack {
             bgView
@@ -60,10 +62,17 @@ struct GIGiveawaySetView: View {
             if isShowTagsCustomView {
                 tagsCustomView
             }
+            if isShowPurchaseView {
+                purchasePopView
+            }
         }.alert(isPresented: $isShowAlert, content: {
             alert()
         })
-        
+        .sheet(isPresented: $isShowCoinStoreView, content: {
+            GIStoreView()
+                .navigationBarHidden(true)
+                .environmentObject(CoinManager.default)
+        })
     }
     
     func alert() -> Alert {
@@ -72,7 +81,7 @@ struct GIGiveawaySetView: View {
                         isShowCoinStoreView = true
                     }), secondaryButton: .cancel(Text("Cancel")))
         } else {
-            return Alert(title: Text(""), message: Text("请输入有效的链接"), dismissButton: .default(Text("OK")))
+            return Alert(title: Text(""), message: Text(""), dismissButton: .default(Text("OK")))
         }
         
     }
@@ -131,6 +140,10 @@ extension GIGiveawaySetView {
                 Text("Custmize")
                     .font(Font.custom("Avenir-Heavy", size: 16))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6").withAlphaComponent(0.5)))
+                    .onTapGesture {
+                        //TODO: TAP winner custom
+                        isShowWinnersCustomView = true
+                    }
                 Image("custmize_button_png")
                     .frame(width: 34, height: 34, alignment: .center)
                     .onTapGesture {
@@ -231,7 +244,10 @@ extension GIGiveawaySetView {
                         .frame(height: 40)
                     HStack {
                         Button(action: {
-                            winnersCustomCount -= 1
+                            if winnersCustomCount > 0 {
+                                winnersCustomCount -= 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -259,7 +275,10 @@ extension GIGiveawaySetView {
                         Spacer()
                             .frame(width: 0)
                         Button(action: {
-                            winnersCustomCount += 1
+                            if winnersCustomCount < 20 {
+                                winnersCustomCount += 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -277,7 +296,7 @@ extension GIGiveawaySetView {
                         //TODO: custom winners ok
                         let customWinnersItem = WinnerSetItem.init(id: 100000, count: winnersCustomCount, isPro: true)
                         currentWinnerItem = customWinnersItem
-                        
+                        isShowWinnersCustomView = false
                     }, label: {
                         ZStack {
                             Image("number_ok_button")
@@ -319,7 +338,7 @@ extension GIGiveawaySetView {
                 Text("Substitutes ")
                     .font(Font.custom("Avenir-Heavy", size: 20))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
-                Text("\(currentWinnerItem?.count ?? 1)")
+                Text("\(currentSubstitutesItem?.count ?? 1)")
                     .font(Font.custom("Avenir-Heavy", size: 20))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                 
@@ -327,6 +346,10 @@ extension GIGiveawaySetView {
                 Text("Custmize")
                     .font(Font.custom("Avenir-Heavy", size: 16))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6").withAlphaComponent(0.5)))
+                    .onTapGesture {
+                        //TODO: TAP substitutes custom
+                        isShowSubstitutesCustomView = true
+                    }
                 Image("custmize_button_png")
                     .frame(width: 34, height: 34, alignment: .center)
                     .onTapGesture {
@@ -356,7 +379,7 @@ extension GIGiveawaySetView {
     func substituteSetCell(item: SubstitutesSetItem) -> some View {
          
         ZStack {
-            if let currentWinnertItem_m = currentWinnerItem, currentWinnertItem_m.count == item.count {
+            if let currentSubstitutesItem_m = currentSubstitutesItem, currentSubstitutesItem_m.count == item.count {
 
                 LinearGradient(gradient: Gradient(colors: [Color(DynamicColor(hexString: "#9E86E0")), Color(DynamicColor(hexString: "#8056FC"))]),
                                              startPoint: .top,
@@ -425,7 +448,10 @@ extension GIGiveawaySetView {
                         .frame(height: 40)
                     HStack {
                         Button(action: {
-                            substitutesCustomCount -= 1
+                            if substitutesCustomCount > 0 {
+                                substitutesCustomCount -= 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -453,7 +479,10 @@ extension GIGiveawaySetView {
                         Spacer()
                             .frame(width: 0)
                         Button(action: {
-                            substitutesCustomCount += 1
+                            if substitutesCustomCount < 20 {
+                                substitutesCustomCount += 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -471,7 +500,7 @@ extension GIGiveawaySetView {
                         //TODO: custom winners ok
                         let customSubstitutesItem = SubstitutesSetItem.init(id: 100000, count: substitutesCustomCount, isPro: true)
                         currentSubstitutesItem = customSubstitutesItem
-                        
+                        isShowSubstitutesCustomView = false
                     }, label: {
                         ZStack {
                             Image("number_ok_button")
@@ -511,7 +540,7 @@ extension GIGiveawaySetView {
                 Text("Tags Required ")
                     .font(Font.custom("Avenir-Heavy", size: 20))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
-                Text("\(currentWinnerItem?.count ?? 1)")
+                Text("\(currentTagsItem?.count ?? 1)")
                     .font(Font.custom("Avenir-Heavy", size: 20))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                 
@@ -519,6 +548,10 @@ extension GIGiveawaySetView {
                 Text("Custmize")
                     .font(Font.custom("Avenir-Heavy", size: 16))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6").withAlphaComponent(0.5)))
+                    .onTapGesture {
+                        //TODO: TAP tagRequiredSet custom
+                        isShowTagsCustomView = true
+                    }
                 Image("custmize_button_png")
                     .frame(width: 34, height: 34, alignment: .center)
                     .onTapGesture {
@@ -550,7 +583,7 @@ extension GIGiveawaySetView {
     func tagRequiredSetCell(item: TagsRequiredSetItem) -> some View {
          
         ZStack {
-            if let currentWinnertItem_m = currentWinnerItem, currentWinnertItem_m.count == item.count {
+            if let currentTagsItem_m = currentTagsItem, currentTagsItem_m.count == item.count {
 
                 LinearGradient(gradient: Gradient(colors: [Color(DynamicColor(hexString: "#9E86E0")), Color(DynamicColor(hexString: "#8056FC"))]),
                                              startPoint: .top,
@@ -621,7 +654,10 @@ extension GIGiveawaySetView {
                         .frame(height: 40)
                     HStack {
                         Button(action: {
-                            tagsCustomCount -= 1
+                            if tagsCustomCount > 0 {
+                                tagsCustomCount -= 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -649,7 +685,10 @@ extension GIGiveawaySetView {
                         Spacer()
                             .frame(width: 0)
                         Button(action: {
-                            tagsCustomCount += 1
+                            if tagsCustomCount < 20 {
+                                tagsCustomCount += 1
+                            }
+                            
                         }, label: {
                             ZStack {
                                 Color(.white)
@@ -667,7 +706,7 @@ extension GIGiveawaySetView {
                         //TODO: custom winners ok
                         let customTagsItem = TagsRequiredSetItem.init(id: 100000, count: tagsCustomCount, isPro: true)
                         currentTagsItem = customTagsItem
-                        
+                        isShowTagsCustomView = false
                     }, label: {
                         ZStack {
                             Image("number_ok_button")
@@ -771,27 +810,37 @@ extension GIGiveawaySetView {
     }
     
     var bottomBtn: some View {
-        Button(action: {
-            //TODO: Start Giveaway
-            if isPro {
-                isShowPurchaseView = true
-            } else {
-                userModelManager.filterWinnersAndSubstitutes(winnerCount: currentWinnerItem?.count ?? 1, substitutesCount: currentSubstitutesItem?.count ?? 1, tagsCount: currentTagsItem?.count ?? 0)
-                isShowResultView = true
-            }
-            
-        }, label: {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color(DynamicColor(hexString: "#9E86E0")), Color(DynamicColor(hexString: "#8056FC"))]),
-                                             startPoint: .top,
-                                             endPoint: .bottom)
-                
-                Text("Start Giveaway")
-                    .font(Font.custom("Avenir-Heavy", size: 20))
-                    .foregroundColor(Color(DynamicColor(hexString: "#FFFFFF")))
-            }
-        }).frame(width: UIScreen.main.bounds.width, height: 42, alignment: .center)
-        .cornerRadius([.topLeft, .topRight], 16)
+        NavigationLink(
+            destination: GIGiveawayResultView()
+                .hideNavigationBar()
+                .environmentObject(CoinManager.default)
+                .environmentObject(DataManager.default)
+                .environmentObject(UserModelRequest.default),
+            isActive: $isShowResultView,
+            label: {
+                Button(action: {
+                    //TODO: Start Giveaway
+                    if isPro {
+                        isShowPurchaseView = true
+                    } else {
+                        userModelManager.filterWinnersAndSubstitutes(winnerCount: currentWinnerItem?.count ?? 1, substitutesCount: currentSubstitutesItem?.count ?? 1, tagsCount: currentTagsItem?.count ?? 0)
+                        isShowResultView = true
+                    }
+                    
+                }, label: {
+                    ZStack {
+                        LinearGradient(gradient: Gradient(colors: [Color(DynamicColor(hexString: "#9E86E0")), Color(DynamicColor(hexString: "#8056FC"))]),
+                                                     startPoint: .top,
+                                                     endPoint: .bottom)
+                        
+                        Text("Start Giveaway")
+                            .font(Font.custom("Avenir-Heavy", size: 20))
+                            .foregroundColor(Color(DynamicColor(hexString: "#FFFFFF")))
+                    }
+                }).frame(width: UIScreen.main.bounds.width, height: 42, alignment: .center)
+                .cornerRadius([.topLeft, .topRight], 16)
+            })
+        
     }
 }
 
@@ -801,6 +850,7 @@ struct GIGiveawaySetView_Previews: PreviewProvider {
         GIGiveawaySetView()
             .environmentObject(CoinManager.default)
             .environmentObject(DataManager.default)
+            .environmentObject(UserModelRequest.default)
     }
 }
 

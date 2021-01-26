@@ -40,14 +40,12 @@ struct GIMainView: View {
                     
                     FCSplashView()
                         .navigationBarHidden(true)
-                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 80, alignment: .center)
-                        
+                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+
                         .environmentObject(splashManager)
                         .hidden(splashManager.isShowSplash)
-                }
-            }.navigationBarHidden(true)
-            
-            
+                }.navigationBarHidden(true)
+            }
         }
     }
 }
@@ -56,6 +54,7 @@ extension GIMainView {
     func contentView() -> some View {
         GeometryReader { geo in
             ZStack {
+                 
                 if isShowHomeView {
                     GIHomeView()
                         .environmentObject(CoinManager.default)
@@ -71,12 +70,7 @@ extension GIMainView {
                         .environmentObject(CoinManager.default)
                         .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
                 }
-                
-                
-                
-                
-                
-                
+                 
             }
             
         }

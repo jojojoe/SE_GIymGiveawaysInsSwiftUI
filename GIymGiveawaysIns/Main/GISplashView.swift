@@ -34,14 +34,17 @@ struct FCSplashView: View {
             LinearGradient(gradient: Gradient(colors: [Color(DynamicColor(hexString: "#8056FC")), Color(DynamicColor(hexString: "#AC8DFF"))]),
                                          startPoint: .top,
                                          endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             VStack {
+                Spacer()
                 topContentView
-//                Spacer()
-//                    .frame(height: 38)
+                Spacer()
+                    .frame(height: 0)
                 pageControlView
+                    .frame(height: 30)
                 bottomBtn
                 Spacer()
-                    .frame(height: 40)
+                    .frame(height: 80)
             }
         }
 
@@ -69,116 +72,111 @@ extension FCSplashView {
         VStack {
             
             
-            ZStack {
-                if tabSelectIndex == 0 {
-                    contentSplashView(imgName: splashList[0].imgName, title: splashList[0].title, content: splashList[0].content).tag(splashList[0].id)
-                        //                        .offset(x: 0, y: 20)
-                        .scaleEffect(self.isShow1 ? 1:0.2)
-                        .transition(.opacity)
-                        .animation(.easeInOut)
-                        .onAppear {
+            if #available(iOS 14.0, *) {
+                TabView(selection: $tabSelectIndex,
+                        content:  {
+
+                            contentSplashView(imgName: splashList[0].imgName, title: splashList[0].title, content: splashList[0].content).tag(splashList[0].id)
+                                //                        .offset(x: 0, y: 20)
+                                .scaleEffect(self.isShow1 ? 1:0.2)
+                                .transition(.opacity)
+                                .animation(.easeInOut)
+                                .onAppear {
+                                    withAnimation{
+                                        self.isShow1 = true
+                                    }
+                                }
+
+                            contentSplashView(imgName: splashList[1].imgName, title: splashList[1].title, content: splashList[1].content).tag(splashList[1].id)
+                                //                        .offset(x: 0, y: 20)
+                                .scaleEffect(self.isShow2 ? 1:0.2)
+                                .transition(.opacity)
+                                .animation(.easeInOut)
+                                .onAppear {
+                                    withAnimation{
+                                        self.isShow2 = true
+                                    }
+                                }
+
+                            contentSplashView(imgName: splashList[2].imgName, title: splashList[2].title, content: splashList[2].content).tag(splashList[2].id)
+                                //                        .offset(x: 0, y: 20)
+                                .scaleEffect(self.isShow3 ? 1:0.2)
+                                .transition(.opacity)
+                                .animation(.easeInOut)
+                                .onAppear {
+                                    withAnimation{
+                                        self.isShow3 = true
+                                    }
+                                }
+
+                        })
+                    .animation(.easeInOut)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .onChange(of: tabSelectIndex) { (tabSelectIndex) in
+                        if tabSelectIndex == 0 {
                             withAnimation{
                                 self.isShow1 = true
+                                self.isShow2 = false
+                                self.isShow3 = false
                             }
-                        }
-                }
-                
-                if tabSelectIndex == 1 {
-                    contentSplashView(imgName: splashList[1].imgName, title: splashList[1].title, content: splashList[1].content).tag(splashList[1].id)
-                        //                        .offset(x: 0, y: 20)
-                        .scaleEffect(self.isShow2 ? 1:0.2)
-                        .transition(.opacity)
-                        .animation(.easeInOut)
-                        .onAppear {
+                        } else if tabSelectIndex == 1 {
                             withAnimation{
                                 self.isShow2 = true
+                                self.isShow1 = false
+                                self.isShow3 = false
                             }
-                        }
-                }
-                
-                if tabSelectIndex == 2 {
-                    contentSplashView(imgName: splashList[2].imgName, title: splashList[2].title, content: splashList[2].content).tag(splashList[2].id)
-                        //                        .offset(x: 0, y: 20)
-                        .scaleEffect(self.isShow3 ? 1:0.2)
-                        .transition(.opacity)
-                        .animation(.easeInOut)
-                        .onAppear {
+                        } else if tabSelectIndex == 2 {
                             withAnimation{
                                 self.isShow3 = true
+                                self.isShow2 = false
+                                self.isShow1 = false
                             }
                         }
+                    }
+            } else {
+                ZStack {
+                    if tabSelectIndex == 0 {
+                        contentSplashView(imgName: splashList[0].imgName, title: splashList[0].title, content: splashList[0].content).tag(splashList[0].id)
+                            //                        .offset(x: 0, y: 20)
+                            .scaleEffect(self.isShow1 ? 1:0.2)
+                            .transition(.opacity)
+                            .animation(.easeInOut)
+                            .onAppear {
+                                withAnimation{
+                                    self.isShow1 = true
+                                }
+                            }
+                    }
+
+                    if tabSelectIndex == 1 {
+                        contentSplashView(imgName: splashList[1].imgName, title: splashList[1].title, content: splashList[1].content).tag(splashList[1].id)
+                            //                        .offset(x: 0, y: 20)
+                            .scaleEffect(self.isShow2 ? 1:0.2)
+                            .transition(.opacity)
+                            .animation(.easeInOut)
+                            .onAppear {
+                                withAnimation{
+                                    self.isShow2 = true
+                                }
+                            }
+                    }
+
+                    if tabSelectIndex == 2 {
+                        contentSplashView(imgName: splashList[2].imgName, title: splashList[2].title, content: splashList[2].content).tag(splashList[2].id)
+                            //                        .offset(x: 0, y: 20)
+                            .scaleEffect(self.isShow3 ? 1:0.2)
+                            .transition(.opacity)
+                            .animation(.easeInOut)
+                            .onAppear {
+                                withAnimation{
+                                    self.isShow3 = true
+                                }
+                            }
+                    }
+
+
                 }
-                
-                
             }
-            
-            
-//            if #available(iOS 14.0, *) {
-//                TabView(selection: $tabSelectIndex,
-//                        content:  {
-//
-//                            contentSplashView(imgName: splashList[0].imgName, title: splashList[0].title, content: splashList[0].content).tag(splashList[0].id)
-//                                //                        .offset(x: 0, y: 20)
-//                                .scaleEffect(self.isShow1 ? 1:0.2)
-//                                .transition(.opacity)
-//                                .animation(.easeInOut)
-//                                .onAppear {
-//                                    withAnimation{
-//                                        self.isShow1 = true
-//                                    }
-//                                }
-//
-//                            contentSplashView(imgName: splashList[1].imgName, title: splashList[1].title, content: splashList[1].content).tag(splashList[1].id)
-//                                //                        .offset(x: 0, y: 20)
-//                                .scaleEffect(self.isShow2 ? 1:0.2)
-//                                .transition(.opacity)
-//                                .animation(.easeInOut)
-//                                .onAppear {
-//                                    withAnimation{
-//                                        self.isShow2 = true
-//                                    }
-//                                }
-//
-//                            contentSplashView(imgName: splashList[2].imgName, title: splashList[2].title, content: splashList[2].content).tag(splashList[2].id)
-//                                //                        .offset(x: 0, y: 20)
-//                                .scaleEffect(self.isShow3 ? 1:0.2)
-//                                .transition(.opacity)
-//                                .animation(.easeInOut)
-//                                .onAppear {
-//                                    withAnimation{
-//                                        self.isShow3 = true
-//                                    }
-//                                }
-//
-//                        })
-//                    .animation(.easeInOut)
-//                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//                    .onChange(of: tabSelectIndex) { (tabSelectIndex) in
-//                        if tabSelectIndex == 0 {
-//                            withAnimation{
-//                                self.isShow1 = true
-//                                self.isShow2 = false
-//                                self.isShow3 = false
-//                            }
-//                        } else if tabSelectIndex == 1 {
-//                            withAnimation{
-//                                self.isShow2 = true
-//                                self.isShow1 = false
-//                                self.isShow3 = false
-//                            }
-//                        } else if tabSelectIndex == 2 {
-//                            withAnimation{
-//                                self.isShow3 = true
-//                                self.isShow2 = false
-//                                self.isShow1 = false
-//                            }
-//                        }
-//                    }
-//            } else {
-//
-//
-//
-//            }
             
             
         }
@@ -231,27 +229,31 @@ extension FCSplashView {
         GeometryReader { geo in
             VStack {
                 Spacer()
-                    
+//                    .frame(height: 15)
                 Image(imgName)
-                    
                     .resizable()
                     .frame(width: abs(geo.size.width - (40 * 2)),
                            height: abs(geo.size.width - (40 * 2)) * (618.0 / 586.0),
                            alignment: .center)
+//                Spacer()
+//                    .frame(height: 25)
+//                Text(title)
+//                    .lineLimit(3)
+//                    .multilineTextAlignment(.center)
+//                    .font(Font.custom("Avenir-Black", size: 24))
+//                    .foregroundColor(.white)
+//                    .padding(EdgeInsets(top: 10, leading: 40, bottom: 20, trailing: 40))
                 Spacer()
-                    .frame(height: 55)
-                Text(title)
-                    .font(Font.custom("Avenir-Black", size: 24))
-                    .foregroundColor(.white)
-                Spacer()
-                    .frame(height: 15)
-                Text( content)
+                    .frame(height: 10)
+                Text(content)
+                    .lineLimit(3)
                     .font(Font.custom("Avenir-Black", size: 24))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(DynamicColor(hexString: "#FFFFFF")))
                     .padding(EdgeInsets(top: 10, leading: 40, bottom: 20, trailing: 40))
                     
                 Spacer()
+                    .frame(height: 0)
 
             }.width(geo.size.width)
         }

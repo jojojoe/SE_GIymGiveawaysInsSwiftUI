@@ -16,7 +16,7 @@ struct GIHomeView: View {
     @State private var isShowHistoryView: Bool = false
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 Spacer()
                     .frame(height: 20)
@@ -40,7 +40,7 @@ struct GIHomeView: View {
                     destination: GIHistoryView()
                         .hideNavigationBar()
                         .environmentObject(HistoryManager.default),
-                    isActive: $isShowPickerView,
+                    isActive: $isShowHistoryView,
                     label: {
                         historyView
                             .onTapGesture {
@@ -50,8 +50,8 @@ struct GIHomeView: View {
                  
                 Spacer()
                     
-            }
-        }
+            }.navigationBarHidden(true)
+//        }
         
         
     }
@@ -62,7 +62,7 @@ extension GIHomeView {
     var pickView: some View {
         VStack {
             HStack {
-                Text("Picker")
+                Text("Gift Picker")
                     .font(Font.custom("Avenir-Heavy", size: 24))
                     .foregroundColor(Color(DynamicColor(hexString: "#5937C6")))
                 Spacer()

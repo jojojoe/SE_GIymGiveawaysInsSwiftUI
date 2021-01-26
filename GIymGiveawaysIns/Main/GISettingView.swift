@@ -27,6 +27,7 @@ struct GISettingView: View {
     var body: some View {
         ZStack {
             bgView
+                .edgesIgnoringSafeArea(.all)
             contentView
         }
         .sheet(isPresented: self.$showMailSheet) {
@@ -110,7 +111,7 @@ extension GISettingView {
             VStack {
                 // feedback
                 Button(action: {
-                    
+                    showMailSheet = true
                 }, label: {
                     HStack {
                         Spacer()
