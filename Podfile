@@ -37,7 +37,7 @@ target 'GIymGiveawaysIns' do
   pod 'Adjust'
 #
 #  pod 'FireAdverting', '~> 0.1.10'
-#
+
 #  pod 'Alamofire'
 #  pod 'ZKProgressHUD'
 #  pod 'Toast'
