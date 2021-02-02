@@ -53,14 +53,14 @@ class CoinManager: ObservableObject {
         
         // iap items list
         
-        let iapItem0 = StoreItem.init(id: 0, iapId: "com.followersgiveawayforgogogogt.listone", coin: 100, price: "$0.99", color: "#FFDCEC")
-        let iapItem1 = StoreItem.init(id: 1, iapId: "com.followersgiveawayforgogogogt.listtwo", coin: 200, price: "$1.99", color: "#C9FFEE")
-        let iapItem2 = StoreItem.init(id: 2, iapId: "com.followersgiveawayforgogogogt.listthree", coin: 500, price: "$4.99", color: "#FFDCEC")
-        let iapItem3 = StoreItem.init(id: 3, iapId: "com.followersgiveawayforgogogogt.listfour", coin: 800, price: "$7.99", color: "#C9FFEE")
-        let iapItem4 = StoreItem.init(id: 4, iapId: "com.followersgiveawayforgogogogt.listfive", coin: 1200, price: "$9.99", color: "#FFDCEC")
-        let iapItem5 = StoreItem.init(id: 5, iapId: "com.followersgiveawayforgogogogt.listsix", coin: 1800, price: "$12.99", color: "#C9FFEE")
-        let iapItem6 = StoreItem.init(id: 6, iapId: "com.followersgiveawayforgogogogt.listseven", coin: 2500, price: "$15.99", color: "#FFDCEC")
-        let iapItem7 = StoreItem.init(id: 7, iapId: "com.followersgiveawayforgogogogt.listeight", coin: 3200, price: "$18.99", color: "#C9FFEE")
+        let iapItem0 = StoreItem.init(id: 0, iapId: "com.followersgiveawayforgogogogt.listoone", coin: 100, price: "$0.99", color: "#FFDCEC")
+        let iapItem1 = StoreItem.init(id: 1, iapId: "com.followersgiveawayforgogogogt.listotwo", coin: 200, price: "$1.99", color: "#C9FFEE")
+        let iapItem2 = StoreItem.init(id: 2, iapId: "com.followersgiveawayforgogogogt.listothree", coin: 500, price: "$4.99", color: "#FFDCEC")
+        let iapItem3 = StoreItem.init(id: 3, iapId: "com.followersgiveawayforgogogogt.listofour", coin: 800, price: "$7.99", color: "#C9FFEE")
+        let iapItem4 = StoreItem.init(id: 4, iapId: "com.followersgiveawayforgogogogt.listofive", coin: 1200, price: "$9.99", color: "#FFDCEC")
+        let iapItem5 = StoreItem.init(id: 5, iapId: "com.followersgiveawayforgogogogt.listosix", coin: 1800, price: "$12.99", color: "#C9FFEE")
+        let iapItem6 = StoreItem.init(id: 6, iapId: "com.followersgiveawayforgogogogt.listoseven", coin: 2500, price: "$15.99", color: "#FFDCEC")
+        let iapItem7 = StoreItem.init(id: 7, iapId: "com.followersgiveawayforgogogogt.listoeight", coin: 3200, price: "$18.99", color: "#C9FFEE")
         
         
         coinIpaItemList = [iapItem0, iapItem1, iapItem2, iapItem3, iapItem4, iapItem5, iapItem6, iapItem7]

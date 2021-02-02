@@ -54,6 +54,7 @@
 		EB72597025BAD38B00EBBFC2 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		EB72597325BAD6B900EBBFC2 /* SplashManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashManager.swift; sourceTree = "<group>"; };
 		EB72597625BADD6B00EBBFC2 /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		EB7833A125C3C117001FD13F /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		EBA76CFA25B6904700D31C60 /* QGridHor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QGridHor.swift; sourceTree = "<group>"; };
 		EBA76D0425B6AA7200D31C60 /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		EBA76D0925B6B51A00D31C60 /* GIGiveawayPrizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGiveawayPrizeView.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 				EBF0FD4E25B5895300B883B8 /* Assets.xcassets */,
 				EBF0FD5325B5895300B883B8 /* LaunchScreen.storyboard */,
 				EBF0FD5625B5895300B883B8 /* Info.plist */,
+				EB7833A125C3C117001FD13F /* Configuration.storekit */,
 			);
 			name = Root;
 			sourceTree = "<group>";
@@ -512,7 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.0;
+				CURRENT_PROJECT_VERSION = 1.0.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"GIymGiveawaysIns/Preview Content\"";
 				DEVELOPMENT_TEAM = 598UKLP25U;
 				ENABLE_PREVIEWS = YES;
@@ -537,7 +539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.0;
+				CURRENT_PROJECT_VERSION = 1.0.0.1;
 				DEVELOPMENT_ASSET_PATHS = "\"GIymGiveawaysIns/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;

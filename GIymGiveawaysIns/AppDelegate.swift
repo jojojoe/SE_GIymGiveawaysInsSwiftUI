@@ -7,6 +7,8 @@
 
 import UIKit
 import Adjust
+import SwiftyStoreKit
+
 // he /*
 enum AdjustKey: String {
     case AdjustKeyAppToken = "z9obups5xdkw"
@@ -29,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         #endif
+        SwiftyStoreKit.completeTransactions { (list) in
+            
+        }
+        
         // he /*
         Adjust.appDidLaunch(ADJConfig(appToken: AdjustKey.AdjustKeyAppToken.rawValue, environment: ADJEnvironmentProduction))
         Adjust.trackEvent(ADJEvent(eventToken: AdjustKey.AdjustKeyAppLaunch.rawValue))

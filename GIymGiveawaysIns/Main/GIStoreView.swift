@@ -159,6 +159,7 @@ extension GIStoreView {
                 presentingToast_success = true
             } else {
                 presentingToast_fail = true
+                presentingToast_fail_message = errorString ?? ""
             }
         }
         
