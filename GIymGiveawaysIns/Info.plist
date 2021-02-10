@@ -27,6 +27,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>App needs your camera permission to take photo and edit it background, add stickers, text and other effect.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App needs your photo gallery permission to choose photo and edit it background, add stickers, text and other effect.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs your photo gallery permission to choose and save photo and edit it background, add stickers, text and other effect.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

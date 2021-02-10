@@ -37,6 +37,8 @@ struct ContentView: View {
         VStack {
             GIMainView()
                 .environmentObject(FCSplashViewManager.default)
+                .environmentObject(HLExManager.default)
+            
             
 //            FCSplashView()
 //            Text("test")

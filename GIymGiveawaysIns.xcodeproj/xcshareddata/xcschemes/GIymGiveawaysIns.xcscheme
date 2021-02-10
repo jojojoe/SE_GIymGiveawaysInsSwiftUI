@@ -50,9 +50,6 @@
             ReferencedContainer = "container:GIymGiveawaysIns.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <StoreKitConfigurationFileReference
-         identifier = "../GIymGiveawaysIns/Configuration.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

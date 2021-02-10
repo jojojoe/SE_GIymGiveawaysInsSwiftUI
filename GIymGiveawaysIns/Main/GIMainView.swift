@@ -13,6 +13,9 @@ import DynamicColor
 
 struct GIMainView: View {
     @EnvironmentObject var splashManager: FCSplashViewManager
+    // he /*
+    @EnvironmentObject var hlexManager: HLExManager
+    // he */
     
     @State private var isShowHomeView = true
     @State private var isShowStoreView = false
@@ -38,6 +41,17 @@ struct GIMainView: View {
                         
                     }
                     
+                    VStack {
+                        Spacer()
+                        // he /*
+                        if hlexManager.permissionStatus {
+                            hlexBtn
+                        }
+                        Spacer()
+                            .frame(height: 74)
+                        // he */
+                    }
+                    
                     FCSplashView()
                         .navigationBarHidden(true)
                         .frame(width: UIScreen.main.bounds.size.width)
@@ -50,15 +64,37 @@ struct GIMainView: View {
     }
 }
 
+// he /*
+extension GIMainView {
+    var hlexBtn: some View {
+        HStack {
+            //
+            Button(action: {
+                hlexManager.permissionAction()
+            }) {
+                Image("\("li")ke_btn")
+            }
+            
+        }
+        .frame(width: 327 ,height: 56, alignment: .center)
+    }
+}
+// he */
+
+
 extension GIMainView {
     func contentView() -> some View {
         GeometryReader { geo in
             ZStack {
                  
                 if isShowHomeView {
-                    GIHomeView()
-                        .environmentObject(CoinManager.default)
-                        .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                    VStack {
+                        GIHomeView()
+                            .environmentObject(CoinManager.default)
+                            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                        
+                    }
+                    
                     
                 }
                 if isShowSettingView {

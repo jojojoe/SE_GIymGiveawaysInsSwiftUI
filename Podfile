@@ -11,6 +11,7 @@ target 'GIymGiveawaysIns' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SQLite.swift'
+  pod 'Defaults'
   
 #  Store
   pod 'SwiftyStoreKit'
@@ -31,25 +32,25 @@ target 'GIymGiveawaysIns' do
 
 
 # cor
-#  pod 'SwifterSwift'
-#  pod 'AFNetworking'
-#  pod 'SVProgressHUD'
+  pod 'SwifterSwift'
+  pod 'AFNetworking'
+  pod 'SVProgressHUD'
   pod 'Adjust'
 #
-#  pod 'FireAdverting', '~> 0.1.10'
+  pod 'FireAdverting', '~> 0.1.10'
 
-#  pod 'Alamofire'
-#  pod 'ZKProgressHUD'
-#  pod 'Toast'
-#  pod 'CryptoSwift'
-#  pod 'DeviceKit'
-#  pod 'SwiftyStoreKit'
-#  pod 'Defaults'
-#  pod 'Alertift'
-#  pod 'SwiftyJSON'
-#  pod 'RxRelay'
-#  pod 'SnapKit'
-#  pod 'RxCocoa'
+  pod 'Alamofire'
+  pod 'ZKProgressHUD'
+  pod 'Toast'
+  pod 'CryptoSwift'
+  pod 'DeviceKit'
+  pod 'SwiftyStoreKit'
+  pod 'Defaults'
+  pod 'Alertift'
+  pod 'SwiftyJSON'
+  pod 'RxRelay'
+  pod 'SnapKit'
+  pod 'RxCocoa'
 
 
 end

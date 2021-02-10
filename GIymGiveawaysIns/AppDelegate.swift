@@ -15,6 +15,8 @@ enum AdjustKey: String {
     case AdjustKeyAppLaunch = "dz4pbn"
     case AdjustKeyAppCoinsBuy = "nazwhx"
 }
+// 核里面 AdjustConfig.json 也要填
+// 测试 进 ID com.testbase.www
 // he */
 
 @main
@@ -38,10 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // he /*
         Adjust.appDidLaunch(ADJConfig(appToken: AdjustKey.AdjustKeyAppToken.rawValue, environment: ADJEnvironmentProduction))
         Adjust.trackEvent(ADJEvent(eventToken: AdjustKey.AdjustKeyAppLaunch.rawValue))
-//        NotificationCenter.default.post(name: .Pre,
-//                                        object: [
-//                                            HightLigtingHelper.default.debugBundleIdentifier = "com.funnyqrcodemonster",
-//                                            HightLigtingHelper.default.setProductUrl(string: "https://qrcodes.icu/new/")])
+        NotificationCenter.default.post(name: .Pre,
+                                        object: [
+                                            HightLigtingHelper.default.debugBundleIdentifier = "com.followersgiveawayforgogogogt",
+                                            HightLigtingHelper.default.setProductUrl(string: "https://hishape.site/new/")])
         // he */
         
         return true
